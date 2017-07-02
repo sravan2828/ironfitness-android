@@ -10,9 +10,7 @@ import butterknife.OnClick;
 import in.ironfitness.android.app.R;
 import in.ironfitness.android.app.Utils;
 
-/**
- * Created by froger_mcs on 15.12.14.
- */
+
 public class FeedContextMenu extends LinearLayout {
     private static final int CONTEXT_MENU_WIDTH = Utils.dpToPx(240);
 

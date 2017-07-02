@@ -4,10 +4,8 @@ import android.app.Application;
 
 import timber.log.Timber;
 
-/**
- * Created by froger_mcs on 05.11.14.
- */
-public class InstaMaterialApplication extends Application {
+
+public class IronFitnessApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();

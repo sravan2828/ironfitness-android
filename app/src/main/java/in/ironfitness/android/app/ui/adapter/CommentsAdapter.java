@@ -18,9 +18,7 @@ import butterknife.BindView;
 import in.ironfitness.android.app.R;
 import in.ironfitness.android.app.ui.utils.RoundedTransformation;
 
-/**
- * Created by froger_mcs on 11.11.14.
- */
+
 public class CommentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;

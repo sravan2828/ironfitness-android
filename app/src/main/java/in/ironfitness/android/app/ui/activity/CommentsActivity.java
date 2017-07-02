@@ -21,9 +21,7 @@ import in.ironfitness.android.app.Utils;
 import in.ironfitness.android.app.ui.adapter.CommentsAdapter;
 import in.ironfitness.android.app.ui.view.SendCommentButton;
 
-/**
- * Created by froger_mcs on 11.11.14.
- */
+
 public class CommentsActivity extends BaseDrawerActivity implements SendCommentButton.OnSendClickListener {
     public static final String ARG_DRAWING_START_LOCATION = "arg_drawing_start_location";
 

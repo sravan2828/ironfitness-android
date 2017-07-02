@@ -21,9 +21,7 @@ import in.ironfitness.android.app.R;
 import in.ironfitness.android.app.ui.activity.MainActivity;
 import in.ironfitness.android.app.ui.view.LoadingFeedItemView;
 
-/**
- * Created by froger_mcs on 05.11.14.
- */
+
 public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static final String ACTION_LIKE_BUTTON_CLICKED = "action_like_button_button";
     public static final String ACTION_LIKE_IMAGE_CLICKED = "action_like_image_button";
