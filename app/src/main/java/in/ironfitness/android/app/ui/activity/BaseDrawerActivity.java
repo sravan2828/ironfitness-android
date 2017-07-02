@@ -17,9 +17,7 @@ import butterknife.BindString;
 import in.ironfitness.android.app.R;
 import in.ironfitness.android.app.ui.utils.CircleTransformation;
 
-/**
- * Created by Miroslaw Stanek on 15.07.15.
- */
+
 public class BaseDrawerActivity extends BaseActivity {
 
     @BindView(R.id.drawerLayout)
@@ -31,9 +29,6 @@ public class BaseDrawerActivity extends BaseActivity {
     int avatarSize;
     @BindString(R.string.user_profile_photo)
     String profilePhoto;
-
-    //Cannot be bound via Butterknife, hosting view is initialized later (see setupHeader() method)
-    private ImageView ivMenuUserProfilePhoto;
 
     @Override
     public void setContentView(int layoutResID) {
@@ -51,7 +46,7 @@ public class BaseDrawerActivity extends BaseActivity {
             getToolbar().setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    drawerLayout.openDrawer(Gravity.LEFT);
+                    drawerLayout.openDrawer(Gravity.START);
                 }
             });
         }
@@ -59,7 +54,7 @@ public class BaseDrawerActivity extends BaseActivity {
 
     private void setupHeader() {
         View headerView = vNavigation.getHeaderView(0);
-        ivMenuUserProfilePhoto = (ImageView) headerView.findViewById(R.id.ivMenuUserProfilePhoto);
+        ImageView ivMenuUserProfilePhoto = (ImageView) headerView.findViewById(R.id.ivMenuUserProfilePhoto);
         headerView.findViewById(R.id.vGlobalMenuHeader).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +72,7 @@ public class BaseDrawerActivity extends BaseActivity {
     }
 
     public void onGlobalMenuHeaderClick(final View v) {
-        drawerLayout.closeDrawer(Gravity.LEFT);
+        drawerLayout.closeDrawer(Gravity.START);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

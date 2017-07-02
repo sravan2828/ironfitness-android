@@ -19,9 +19,7 @@ import java.util.Map;
 import in.ironfitness.android.app.R;
 import in.ironfitness.android.app.Utils;
 
-/**
- * Created by Miroslaw Stanek on 02.12.2015.
- */
+
 public class FeedItemAnimator extends DefaultItemAnimator {
     private static final DecelerateInterpolator DECCELERATE_INTERPOLATOR = new DecelerateInterpolator();
     private static final AccelerateInterpolator ACCELERATE_INTERPOLATOR = new AccelerateInterpolator();

@@ -69,6 +69,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/name"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="John Smith"
@@ -76,6 +77,7 @@
                                 android:textSize="24sp" />
 
                             <TextView
+                                android:id="@+id/userName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="\@jsmith"
@@ -83,6 +85,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
+                                android:id="@+id/bio"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Mobile development passionate."
@@ -119,6 +122,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/postCount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="1167"
@@ -141,6 +145,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/followerCount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="396"
@@ -163,6 +168,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/followingCount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="485"
@@ -201,21 +207,7 @@
 
             </android.support.design.widget.CollapsingToolbarLayout>
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp">
 
-                <android.support.design.widget.TabLayout
-                    android:id="@+id/tlUserProfileTabs"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:background="?attr/colorAccent"
-                    app:tabGravity="fill"
-                    app:tabIndicatorColor="#5be5ad"
-                    app:tabIndicatorHeight="4dp"
-                    app:tabMode="fixed" />
-
-            </FrameLayout>
 
         </android.support.design.widget.AppBarLayout>
 

@@ -12,18 +12,19 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import in.ironfitness.android.app.R;
 import in.ironfitness.android.app.ui.adapter.UserProfileAdapter;
+import in.ironfitness.android.app.ui.network.ProfileData;
+import in.ironfitness.android.app.ui.pojo.User;
 import in.ironfitness.android.app.ui.utils.CircleTransformation;
 import in.ironfitness.android.app.ui.view.RevealBackgroundView;
 
-/**
- * Created by Miroslaw Stanek on 14.01.15.
- */
+
 public class UserProfileActivity extends BaseDrawerActivity implements RevealBackgroundView.OnStateChangeListener {
     public static final String ARG_REVEAL_START_LOCATION = "reveal_start_location";
 
@@ -35,8 +36,6 @@ public class UserProfileActivity extends BaseDrawerActivity implements RevealBac
     @BindView(R.id.rvUserProfile)
     RecyclerView rvUserProfile;
 
-    @BindView(R.id.tlUserProfileTabs)
-    TabLayout tlUserProfileTabs;
 
     @BindView(R.id.ivUserProfilePhoto)
     ImageView ivUserProfilePhoto;
@@ -49,9 +48,29 @@ public class UserProfileActivity extends BaseDrawerActivity implements RevealBac
     @BindView(R.id.vUserProfileRoot)
     View vUserProfileRoot;
 
+    @BindView(R.id.name)
+    TextView name;
+
+    @BindView(R.id.userName)
+    TextView userName;
+
+    @BindView(R.id.bio)
+    TextView bio;
+
+    @BindView(R.id.postCount)
+    TextView postCount;
+
+    @BindView(R.id.followerCount)
+    TextView followerCount;
+
+    @BindView(R.id.followingCount)
+    TextView followingCount;
+
     private int avatarSize;
     private String profilePhoto;
     private UserProfileAdapter userPhotosAdapter;
+    private ProfileData profileData;
+    private User user;
 
     public static void startUserProfileFromLocation(int[] startingLocation, Activity startingActivity) {
         Intent intent = new Intent(startingActivity, UserProfileActivity.class);
@@ -67,6 +86,16 @@ public class UserProfileActivity extends BaseDrawerActivity implements RevealBac
         this.avatarSize = getResources().getDimensionPixelSize(R.dimen.user_profile_avatar_size);
         this.profilePhoto = getString(R.string.user_profile_photo);
 
+        profileData = new ProfileData();
+        user = profileData.getUser(new User());
+
+        this.name.setText(user.getName());
+        this.userName.setText(user.getUserName());
+        this.bio.setText(user.getBio());
+        this.postCount.setText(Integer.toString(user.getPostCount()));
+        this.followerCount.setText(Integer.toString(user.getFollowerCount()));
+        this.followingCount.setText(Integer.toString(user.getFollowingCount()));
+
         Picasso.with(this)
                 .load(profilePhoto)
                 .placeholder(R.drawable.img_circle_placeholder)
@@ -75,17 +104,12 @@ public class UserProfileActivity extends BaseDrawerActivity implements RevealBac
                 .transform(new CircleTransformation())
                 .into(ivUserProfilePhoto);
 
-        setupTabs();
+
         setupUserProfileGrid();
         setupRevealBackground(savedInstanceState);
     }
 
-    private void setupTabs() {
-        tlUserProfileTabs.addTab(tlUserProfileTabs.newTab().setIcon(R.drawable.ic_grid_on_white));
-        tlUserProfileTabs.addTab(tlUserProfileTabs.newTab().setIcon(R.drawable.ic_list_white));
-        tlUserProfileTabs.addTab(tlUserProfileTabs.newTab().setIcon(R.drawable.ic_place_white));
-        tlUserProfileTabs.addTab(tlUserProfileTabs.newTab().setIcon(R.drawable.ic_label_white));
-    }
+
 
     private void setupUserProfileGrid() {
         final StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
@@ -120,23 +144,16 @@ public class UserProfileActivity extends BaseDrawerActivity implements RevealBac
     public void onStateChange(int state) {
         if (RevealBackgroundView.STATE_FINISHED == state) {
             rvUserProfile.setVisibility(View.VISIBLE);
-            tlUserProfileTabs.setVisibility(View.VISIBLE);
             vUserProfileRoot.setVisibility(View.VISIBLE);
             userPhotosAdapter = new UserProfileAdapter(this);
             rvUserProfile.setAdapter(userPhotosAdapter);
-            animateUserProfileOptions();
             animateUserProfileHeader();
         } else {
-            tlUserProfileTabs.setVisibility(View.INVISIBLE);
             rvUserProfile.setVisibility(View.INVISIBLE);
             vUserProfileRoot.setVisibility(View.INVISIBLE);
         }
     }
 
-    private void animateUserProfileOptions() {
-        tlUserProfileTabs.setTranslationY(-tlUserProfileTabs.getHeight());
-        tlUserProfileTabs.animate().translationY(0).setDuration(300).setStartDelay(USER_OPTIONS_ANIMATION_DELAY).setInterpolator(INTERPOLATOR);
-    }
 
     private void animateUserProfileHeader() {
            vUserProfileRoot.setTranslationY(-vUserProfileRoot.getHeight());

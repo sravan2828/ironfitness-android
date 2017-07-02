@@ -21,15 +21,15 @@ import butterknife.ButterKnife;
 import butterknife.BindView;
 import in.ironfitness.android.app.R;
 import in.ironfitness.android.app.Utils;
+import in.ironfitness.android.app.ui.network.ProfileData;
 
-/**
- * Created by Miroslaw Stanek on 20.01.15.
- */
+
 public class UserProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final int PHOTO_ANIMATION_DELAY = 600;
     private static final Interpolator INTERPOLATOR = new DecelerateInterpolator();
 
+    private ProfileData profileData =new ProfileData();
 
     private final Context context;
     private final int cellSize;
@@ -42,7 +42,7 @@ public class UserProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public UserProfileAdapter(Context context) {
         this.context = context;
         this.cellSize = Utils.getScreenWidth(context) / 3;
-        this.photos = Arrays.asList(context.getResources().getStringArray(R.array.user_photos));
+        this.photos = Arrays.asList(profileData.getProfileImages(context));
     }
 
     @Override

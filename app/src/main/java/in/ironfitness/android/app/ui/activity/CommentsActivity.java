@@ -67,7 +67,7 @@ public class CommentsActivity extends BaseDrawerActivity implements SendCommentB
         commentsAdapter = new CommentsAdapter(this);
         rvComments.setAdapter(commentsAdapter);
         rvComments.setOverScrollMode(View.OVER_SCROLL_NEVER);
-        rvComments.setOnScrollListener(new RecyclerView.OnScrollListener() {
+        rvComments.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
