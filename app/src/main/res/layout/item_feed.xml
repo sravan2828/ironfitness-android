@@ -11,13 +11,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/dark_card_background"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/ivUserProfile"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_feed_top" />
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/ivUserProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/circle_user_card" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8dp"
+                android:text="@string/user_name"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
 
         <in.ironfitness.android.app.ui.view.SquaredFrameLayout
             android:id="@+id/vImageRoot"
@@ -46,11 +61,6 @@
                 android:visibility="invisible" />
 
         </in.ironfitness.android.app.ui.view.SquaredFrameLayout>
-
-        <ImageView
-            android:id="@+id/ivFeedBottom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -85,11 +95,6 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical|right">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_heart_small_blue" />
-
                 <TextSwitcher
                     android:id="@+id/tsLikesCounter"
                     android:layout_width="wrap_content"
@@ -103,12 +108,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="123 likes"
-                        android:textColor="@color/text_like_counter" />
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/text_like_counter" />
+                        android:textColor="@color/white" />
                 </TextSwitcher>
             </LinearLayout>
         </LinearLayout>

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--colors.xml-->
 <resources>
-    <color name="style_color_primary">#2d5d82</color>
-    <color name="style_color_primary_dark">#21425d</color>
+    <color name="style_color_primary">#212121</color>
+    <color name="style_color_primary_dark">#000000</color>
     <color name="style_color_accent">#01bcd5</color>
 
     <color name="fab_color_pressed">#007787</color>
     <color name="fab_color_shadow">#44000000</color>
 
+    <color name="dark_app_background">#303030</color>
+    <color name="dark_card_background">#424242</color>
     <color name="btn_default_light_normal">#00000000</color>
     <color name="btn_default_light_pressed">#40ffffff</color>
     <color name="btn_send_normal">#02c754</color>
@@ -20,4 +22,5 @@
     <color name="text_like_counter">#2b5a83</color>
 
     <color name="bg_comments">#ffffff</color>
+    <color name="white">#ffffff</color>
 </resources>

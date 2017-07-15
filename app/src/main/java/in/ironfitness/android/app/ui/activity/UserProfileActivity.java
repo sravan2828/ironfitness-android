@@ -14,9 +14,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
+import in.ironfitness.android.app.IronFitnessApplication;
 import in.ironfitness.android.app.R;
 import in.ironfitness.android.app.ui.adapter.UserProfileAdapter;
 import in.ironfitness.android.app.ui.network.ProfileData;
@@ -82,13 +85,13 @@ public class UserProfileActivity extends BaseDrawerActivity implements RevealBac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
-
         this.avatarSize = getResources().getDimensionPixelSize(R.dimen.user_profile_avatar_size);
-        this.profilePhoto = getString(R.string.user_profile_photo);
+        //this.profilePhoto = getString(R.string.user_profile_photo);
 
         profileData = new ProfileData();
         user = profileData.getUser(new User());
 
+        this.profilePhoto = user.getProfilePhoto();
         this.name.setText(user.getName());
         this.userName.setText(user.getUserName());
         this.bio.setText(user.getBio());

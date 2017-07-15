@@ -10,6 +10,16 @@ public class User {
     private int followerCount;
     private int followingCount;
 
+    public String getProfilePhoto() {
+        return profilePhoto;
+    }
+
+    public void setProfilePhoto(String profilePhoto) {
+        this.profilePhoto = profilePhoto;
+    }
+
+    private String profilePhoto;
+
     public String getName() {
         return name;
     }

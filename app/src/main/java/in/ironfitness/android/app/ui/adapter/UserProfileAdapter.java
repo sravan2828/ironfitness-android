@@ -22,6 +22,7 @@ import butterknife.BindView;
 import in.ironfitness.android.app.R;
 import in.ironfitness.android.app.Utils;
 import in.ironfitness.android.app.ui.network.ProfileData;
+import in.ironfitness.android.app.ui.pojo.User;
 
 
 public class UserProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -34,7 +35,7 @@ public class UserProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private final Context context;
     private final int cellSize;
 
-    private final List<String> photos;
+    private List<String> photos;
 
     private boolean lockedAnimations = false;
     private int lastAnimatedItem = -1;
@@ -42,7 +43,7 @@ public class UserProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public UserProfileAdapter(Context context) {
         this.context = context;
         this.cellSize = Utils.getScreenWidth(context) / 3;
-        this.photos = Arrays.asList(profileData.getProfileImages(context));
+        this.photos = profileData.getProfileImages(new User());
     }
 
     @Override
@@ -103,7 +104,11 @@ public class UserProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public int getItemCount() {
-        return photos.size();
+        if(null != photos) {
+            return photos.size();
+        }
+        else
+            return 0;
     }
 
     static class PhotoViewHolder extends RecyclerView.ViewHolder {
