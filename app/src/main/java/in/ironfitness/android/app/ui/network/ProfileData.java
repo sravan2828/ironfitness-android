@@ -14,6 +14,8 @@ import org.json.JSONObject;
 import java.util.List;
 
 import in.ironfitness.android.app.IronFitnessApplication;
+import in.ironfitness.android.app.ui.pojo.FeedItem;
+import in.ironfitness.android.app.ui.pojo.FeedItemList;
 import in.ironfitness.android.app.ui.pojo.ProfilePhotoList;
 import in.ironfitness.android.app.ui.pojo.User;
 
@@ -26,10 +28,41 @@ public class ProfileData {
     private Gson gson = new Gson();
     private List<String> photos;
     private User user;
+    public static FeedItemList feedItems;
 
     public ProfileData() {
         this.user =getUser(user);
         this.photos = getProfileImages(user);
+        feedItems=getFeed(user);
+    }
+
+    public FeedItemList getFeed(User user){
+        final String url ="http://www.mocky.io/v2/596a4f8a1100002a0701cd79";
+        // prepare the Request
+        JsonObjectRequest feedRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // display response
+                        Log.d("Response", response.toString());
+                        feedItems =  gson.fromJson(response.toString(), FeedItemList.class);
+
+                        Log.d("list",feedItems.toString());
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("Error.Response", error.getMessage());
+                    }
+                }
+        );
+
+        // add it to the RequestQueue
+        queue.add(feedRequest);
+        return feedItems;
     }
 
     public List<String> getProfileImages(User user){
@@ -58,10 +91,7 @@ public class ProfileData {
 
         // add it to the RequestQueue
         queue.add(profileImageListRequest);
-
-
         return profilePhotoList.photos;
-
     }
 
     public User getUser(User user){
